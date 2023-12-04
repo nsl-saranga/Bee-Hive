@@ -25,10 +25,7 @@ const int LOADCELL_CK_PIN = 4;
 HX711 scale;
 
 // API endpoint details
-// `api_key` is defined
-char server[] = "example.com"; // the base URL
-char path[] = "/sample/path";  // the path
-int port = 4000;               // the port, 80 for HTTP
+// `API_KEY, API_SERVER, API_PATH, API_PORT` are defined
 
 void setup()
 {

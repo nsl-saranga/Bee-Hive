@@ -34,7 +34,11 @@ $conn = new mysqli($servername, $username, $password, $database, $port);
 ### Guide
 
 1. Create a record with a secure `api_key` in the `hive_units` table of the PHP server DB.
-2. Insert the key to the [secrets.env](arduino-megaatmega2560/secrets.env) as `api_key=<KEY FOR THE UNIT>`
+2. Insert following keys to the [secrets.env](arduino-megaatmega2560/secrets.env)
+    - API_KEY=**Alphanumerical** key created above.
+    - API_SERVER=Php server domain or ip.
+    - API_PATH=Path to the endpoint. if the php server is not nested it will be `/`.
+    - API_PORT=Server port to make the request to.
 3. Insert the API endpoint details to the [main.cpp][arduino-megaatmega2560/src/main.cpp]
 4. Connect the hive unit's arduino board to the computer.
 5. Open a terminal inside [arduino-megaatmega2560](arduino-megaatmega2560/).
