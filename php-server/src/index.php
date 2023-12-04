@@ -4,6 +4,7 @@ include "config.php";
 // used for API key validation
 function get_hive_unit_id($api_key)
 {
+    global $conn;
     $sql = "SELECT `id, api_key` FROM `hive_units`";
     $results = $conn->query($sql);
     while ($row = $results->fetch_assoc()) {
