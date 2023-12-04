@@ -5,13 +5,13 @@ include "config.php";
 function get_hive_unit_id($api_key)
 {
     $sql = "SELECT `id, api_key` FROM `hive_units`";
-      $results = $conn->query($sql);
-      while ($row = $results->fetch_assoc()) {
+    $results = $conn->query($sql);
+    while ($row = $results->fetch_assoc()) {
         if (hash_equals($row["api_key"], $api_key)) {
             return $row["id"];
         }
-      }
-      return null;
+    }
+    return null;
 }
 
 // API key from the request header
@@ -54,5 +54,3 @@ try {
     http_response_code(500);
     die('Error storing data: ' . $e->getMessage());
 }
-
-?>
