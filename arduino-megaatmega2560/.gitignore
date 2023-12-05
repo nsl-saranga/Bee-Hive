@@ -7,5 +7,5 @@
 .vscode/launch.json
 .vscode/ipch
 
-# secrets for build env
-secrets.env
+# stores sensitive info that will be available to platformio directly
+/*.secret.ini

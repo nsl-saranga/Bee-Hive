@@ -34,7 +34,7 @@ $conn = new mysqli($servername, $username, $password, $database, $port);
 ### Guide
 
 1. Create a record with a secure `api_key` in the `hive_units` table of the PHP server DB.
-2. Insert following keys to the [secrets.env](arduino-megaatmega2560/api_config.secret.ini)
+2. Insert following keys to the [api_config.secret.ini](arduino-megaatmega2560/api_config.secret.ini)
     - API_KEY=**Alphanumerical** key created above.
     - API_SERVER=Php server domain or ip.
     - API_PATH=Path to the endpoint. if the php server is not nested it will be `/`.
@@ -46,3 +46,14 @@ $conn = new mysqli($servername, $username, $password, $database, $port);
 7. Enter `calibrate` and follow the instructions on the serial monitor.
 8. Re-enter the command `upload` in the terminal.
 9. Enter `release`.
+
+### api_config.secret.ini
+
+```ini
+[api]
+key = SampleAlphanumericAPIKey
+server = api.server.com
+path = /
+port = 80
+
+```
