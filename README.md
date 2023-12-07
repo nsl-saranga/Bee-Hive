@@ -39,7 +39,10 @@ $conn = new mysqli($servername, $username, $password, $database, $port);
     - API_SERVER=Php server domain or ip.
     - API_PATH=Path to the endpoint. if the php server is not nested it will be `/`.
     - API_PORT=Server port to make the request to.
-3. Insert the API endpoint details to the [main.cpp](arduino-megaatmega2560/src/main.cpp)
+3. Insert following keys to the [gsm_config.secret.ini](arduino-megaatmega2560/gsm_config.secret.ini)
+    - GSM_APN=APN used by the attached SIM
+    - GSM_USER=username for the attached SIM
+    - GSM_PASSWORD=password for the attached SIM
 4. Connect the hive unit's arduino board to the computer.
 5. Open a terminal inside [arduino-megaatmega2560](arduino-megaatmega2560).
 6. Enter the command `upload`.
@@ -55,5 +58,15 @@ key = SampleAlphanumericAPIKey
 server = api.server.com
 path = /
 port = 80
+
+```
+
+### gsm_config.secret.ini
+
+```ini
+[gsm]
+apn = apn
+user = user
+password = password
 
 ```
