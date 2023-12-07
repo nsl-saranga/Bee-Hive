@@ -27,6 +27,9 @@ HX711 scale;
 // API endpoint details
 // `API_KEY, API_SERVER, API_PATH, API_PORT` are defined
 
+// GSM auth details
+// `GSM_APN, GSM_USER, GSM_PASSWORD` are defined
+
 void setup()
 {
   Serial.begin(9600);
