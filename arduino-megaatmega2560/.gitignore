@@ -9,3 +9,6 @@
 
 # stores sensitive info that will be available to platformio directly
 /*.secret.ini
+
+# Previously used for storing sensitive info
+/secrets.env
