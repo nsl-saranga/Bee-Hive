@@ -4,7 +4,7 @@
 #ifdef release
 
 #include <Arduino.h>
-
+#include <SoftwareSerial.h>
 #include <DHT.h>
 #include <DHT_U.h>
 #include <HX711.h>
