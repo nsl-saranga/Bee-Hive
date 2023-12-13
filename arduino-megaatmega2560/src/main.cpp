@@ -79,7 +79,9 @@ void initializeGPRS() {
   delay(1000);
   SIM900.println("AT+CIPMUX=0");
   delay(1000);
-  SIM900.println("AT+CSTT=\"GSM_APN\"");
+  SIM900.print("AT+CSTT=\"");
+  SIM900.print(GSM_APN);
+  SIM900.println("\"");
   delay(1000);
   SIM900.println("AT+CIICR");
   delay(3000);
@@ -88,7 +90,7 @@ void initializeGPRS() {
 }
 
 void sendDataToAPI(String data) {
-  SIM900.println("AT+CIPSTART=\"TCP\",\"" + String(API_SERVER) + "\",80");
+   SIM900.println("AT+CIPSTART=\"TCP\",\"" + String(API_SERVER) + "\"," + String(API_PORT));
   delay(2000);
   if (SIM900.find("OK")) {
     Serial.println("TCP Connection Established");
@@ -106,7 +108,8 @@ void sendDataToAPI(String data) {
       "\r\n" +
       data;
 
-  SIM900.println("AT+CIPSEND=" + String(postRequest.length()));
+  SIM900.print("AT+CIPSEND=");
+  SIM900.println(postRequest.length());
   delay(1000);
   if (SIM900.find(">")) {
     Serial.println("Sending data...");
