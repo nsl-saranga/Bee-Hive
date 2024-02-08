@@ -9,7 +9,6 @@
 #include <DHT_U.h>
 #include <HX711.h>
 // #include <arduinoFFT.h>
-#include <SoftwareSerial.h>
 #include <ArduinoJson.h>
 
 #define DHTTYPE DHT22
@@ -62,6 +61,7 @@ void loop()
     sendDataToAPI(jsonPayload);
     // Power down the ADC
     scale.power_down();
+    delay(10000);
 }
 
 void initializeGPRS() {

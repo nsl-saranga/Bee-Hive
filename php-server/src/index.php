@@ -29,24 +29,28 @@ if ($unit_id == NULL) {
 $data = json_decode(file_get_contents('php://input'), true);
 
 // Validate JSON structure
-$expected_keys = ['temp', 'hum', 'weight'];
+$expected_keys = ['inside_temp', 'inside_hum', 'weight', 'outside_temp', 'outside_hum', 'rainfall', 'frequency'];
 if (!is_array($data) || count(array_diff($expected_keys, array_keys($data))) > 0) {
     http_response_code(400);
     die('Invalid JSON structure');
 }
 
 // explicitly define vars so that the insertion does not depend in the data order
-$temp = $data["temp"];
-$hum = $data["hum"];
+$inside_temp = $data["inside_temp"];
+$inside_hum = $data["inside_hum"];
 $weight = $data["weight"];
+$outside_temp = $data["outside_temp"];
+$outside_hum = $data["outside_hum"];
+$rainfall = $data["rainfall"];
+$frequency = $data["frequency"];
 
 // Insert data into the database
 try {
-    $sql = 'INSERT INTO hive_data (unit_id, temp, hum, weight) VALUES (?, ?, ?, ?)';
+    $sql = 'INSERT INTO hive_data (unit_id, inside_temp, inside_hum, weight, outside_temp, outside_hum, $rainfall, $frequency ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
     $stmt = $conn->prepare($sql);
     // how values should be formatted when binding to the sql statement
-    $types = 'iddd';
-    $stmt->bind_param($types, $unit_id, $temp, $hum, $weight);
+    $types = 'idddddbd';
+    $stmt->bind_param($types, $unit_id, $temp, $hum, $weight,$outside_temp, $outside_hum, $rainfall, $frequency);
     $stmt->execute();
     $stmt->close();
     http_response_code(200);
